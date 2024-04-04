@@ -8,9 +8,14 @@
 }
 
 .black {
-	background-color: #A59C94;
+	background-color: 	#769656;
 }
 
 .white {
-	background-color: ghostwhite;
+	background-color: #eeeed2;
 }
+
+.hidden {
+    background-color: gray;
+}
+

@@ -1,14 +1,14 @@
 import React from 'react';
 
 import WhiteKing from './Pieces/WhiteKing';
-import WhiteQueen from './Pieces/WhiteBishop';
+import WhiteQueen from './Pieces/WhiteQueen';
 import WhiteRook from './Pieces/WhiteRook';
 import WhiteKnight from './Pieces/WhiteKnight';
 import WhiteBishop from './Pieces/WhiteBishop';
 import WhitePawn from './Pieces/WhitePawn';
 
 import BlackKing from './Pieces/BlackKing';
-import BlackQueen from './Pieces/BlackBishop';
+import BlackQueen from './Pieces/BlackQueen';
 import BlackRook from './Pieces/BlackRook';
 import BlackKnight from './Pieces/BlackKnight';
 import BlackBishop from './Pieces/BlackBishop';
@@ -47,16 +47,14 @@ case "wr":
     return;
   }
 }
-const Square = ({key,isWhite, piece }) => {
-  const pieceIcon=`../icons/bk.svg`;
-
+const Square = ({key,isWhite, isHidden, piece }) => {
 
   return <div
   className={`box ${
-    isWhite?  "white" : "black"}`}>
+    isHidden ? "hidden" : isWhite?  "white" : "black"}`}>
 <div>
   {
-  piece!=null &&  getPiece(piece)
+    piece!=null && !isHidden &&  getPiece(piece)
   }
 </div>
 

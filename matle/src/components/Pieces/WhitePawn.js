@@ -1,4 +1,4 @@
-import mySvgImage from '../../icons/wq.svg';
+import mySvgImage from '../../icons/wp.svg';
 
 
 export default function MyComponent() {
