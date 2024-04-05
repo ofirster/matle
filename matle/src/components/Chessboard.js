@@ -1,42 +1,45 @@
-import React, { useState,  useEffect } from 'react';
-import Square from './Square';
+import React, { useState } from 'react';
+import PieceSelector from './PieceSelector';
+import HiddenSquare from './HiddenSquare';
+import BoardSquare from './BoardSquare';
+import GuessSquare from './GuessSquare';
 
-const Chessboard = () => {
+const Chessboard = ({chessBoard,hiddenSquares}) => {
 
-  const row1 = ['br',null,null,null,'br',null,null,null];
-  const row2 = ['bp',null,null,null,null,null,'bb','bk'];
-  const row3 = [null,null,'bp',null,null,null,'bp',null];
-  const row4 = [null,null,'bp','bp',null,'wp','wp','bknight'];
-  const row5 = [null,null,null,null,null,null,null,'wp'];
-  const row6 = [null,null,null,null,null,null,'wq',null];
-  const row7 = ['wp','bq',null,'wknight',null,null,null,null];
-  const row8 = [null,null,'wk','wr',null,null,null,'wr'];
 
-  const chessBoard = [row1,row2,row3,row4,row5,row6,row7,row8]
-  
-  const hiddenSquares=['e3','e4','e1','a4','h8']
+  const [selectedSquare, setSelectedSquare] = useState(null);
+  const [showPieceSelector, setShowPieceSelector] = useState(false);
 
+  const handleSquareClick = (squareName) => {
+    setSelectedSquare(squareName);
+    setShowPieceSelector(true);
+  };
+
+  const handlePieceSelection = (piece) => {
+    console.log(`Piece ${piece} selected for square ${selectedSquare}`);
+    // Here, you should update the board state based on the piece selection.
+    setShowPieceSelector(false);
+  };
 
   return (
     <>
-        {chessBoard.length > 0 &&
-            chessBoard.map((row, rIndex) => {
-                return (
-                    <div className="row" key={rIndex}>
-                        {row.map((piece, cIndex) => {
-                          var squareName = String.fromCharCode(97 + cIndex)+(rIndex+1);
-                          const isHidden=hiddenSquares.includes(squareName);
-                            return (
-                        <Square key={`${cIndex}`} isHidden={isHidden} isWhite={(rIndex+cIndex)%2===0} piece={piece} />
+      {chessBoard.map((row, rowIndex) => (
+        <div className="row" key={rowIndex}>
+          {row.map((piece, colIndex) => {
+            const squareName = String.fromCharCode(97 + colIndex) + (8-rowIndex);
+            const isHidden = hiddenSquares.includes(squareName);
+            const isWhite=(rowIndex + colIndex) % 2 === 0;
 
-                            );
-                        })}
-                    </div>
-                );
-            })}
+            if(isHidden)
+              return <HiddenSquare piece={piece} isWhite={isWhite} onClick={()=>handleSquareClick(squareName)}></HiddenSquare>;
+            else
+             return <BoardSquare piece={piece} isWhite={isWhite} ></BoardSquare>;
+          })}
+        </div>
+      ))}
+
     </>
   );
-  }
-
+};
 
 export default Chessboard;

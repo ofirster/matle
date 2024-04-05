@@ -1,4 +1,4 @@
-import mySvgImage from '../../icons/wknight.svg';
+import mySvgImage from '../../icons/wn.svg';
 
 
 export default function MyComponent() {
