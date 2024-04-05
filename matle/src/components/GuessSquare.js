@@ -1,18 +1,23 @@
 import React from 'react';
-import getPiece from '../utils/PieceGenerator'; // Adjusted import
+import getPiece from '../utils/PieceGenerator';
 
-const GuessSquare = ({piece, isWhite, onClick }) => {
+const GuessSquare = ({ piece, isWhite }) => {
 
-  return <div
-  onClick={onClick}
-  className={`guess-square` }>
-<div>
+  function handleOnDrag(e)
   {
-    getPiece(piece)
+    e.dataTransfer.setData("piece",piece)
   }
-</div>
-
-</div>
+  
+  return (
+    
+      <div className={`guess-square`} 
+      draggable
+      onDragStart={(e)=>handleOnDrag(e)}>
+        {getPiece(piece)}
+      </div>
+  );
 };
 
 export default GuessSquare;
+
+

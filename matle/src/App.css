@@ -30,7 +30,10 @@
 }
 
 .hidden {
-    background-color: black;
+    background-color: #f6c5b3	;
+    box-shadow:0px 0px 0px 2px #444 inset;
+
+
 }
 
 
@@ -84,8 +87,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px; /* Adjust based on your layout */
-    height: 40px; /* Adjust based on your layout */
+    width: 50px; /* Adjust based on your layout */
+    height: 50px; /* Adjust based on your layout */
     margin: 3px;
     font-size: 24px; /* Adjust based on your layout */
     font-weight: bold;
@@ -119,14 +122,4 @@
   }
   
 
-  /* In App.css or a relevant stylesheet */
-.draggable-piece {
-    cursor: grab; /* Changes the cursor to indicate draggability */
-  }
-  
-  .draggable-piece:active {
-    cursor: grabbing;
-  }
-  
-  
   

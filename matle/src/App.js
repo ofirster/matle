@@ -1,6 +1,6 @@
 import "./App.css";
 import ChessBoard from "./components/Chessboard"
-import GuessSquare from "./components/GuessSquare";
+import GuessSquare6 from "./components/GuessSquare";
 import PieceSelector from "./components/PieceSelector";
 
 export default function App() {
@@ -15,14 +15,18 @@ export default function App() {
     const row8 = [null, null, 'wk', 'wr', null, null, null, 'wr'];
   
     const board = [row1, row2, row3, row4, row5, row6, row7, row8];
-    const hiddenSquares = ['e3', 'e4', 'e1', 'a4', 'b7'];
+    const hiddenSquares = ['c1', 'b2', 'e1', 'a4', 'b7'];
 
+    function handleGuess()
+    {
+      console.log("guess")
+    }
 return <>
 <div className="chessboard-container">
     <ChessBoard chessBoard={board} hiddenSquares={hiddenSquares}></ChessBoard>
     </div>
     <PieceSelector></PieceSelector>
-      {/* <button className="guess-button" >Guess</button> */}
+      <button className="guess-button" onClick={()=>handleGuess()} >Guess</button>
       {/* <div className="guessesTitle">
       <h2>{hiddenSquares[0]}</h2>
       <h2>{hiddenSquares[1]}</h2>
