@@ -1,7 +1,5 @@
 import "./App.css";
 import ChessBoard from "./components/Chessboard"
-import GuessSquare6 from "./components/GuessSquare";
-import PieceSelector from "./components/PieceSelector";
 
 export default function App() {
 
@@ -22,53 +20,11 @@ export default function App() {
     {
       console.log("guess")
     }
-return <>
+return (
 <div className="chessboard-container">
     <ChessBoard chessBoard={board} hiddenSquares={hiddenSquares}></ChessBoard>
     </div>
-    
-      {/* <div className="guessesTitle">
-      <h2>{hiddenSquares[0]}</h2>
-      <h2>{hiddenSquares[1]}</h2>
-      <h2>{hiddenSquares[2]}</h2>
-      <h2>{hiddenSquares[3]}</h2>
-      <h2>{hiddenSquares[4]}</h2>
-      </div> */}
-      {/* <div className="row">
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-      </div>
-      <div className="row">
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-      </div>
-      <div className="row">
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-      </div>
-      <div className="row">
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-      </div>
-      <div className="row">
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={false}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-        <GuessSquare isWhite={true}></GuessSquare>
-      </div> */}
+   
       
-</>
+);
 }

@@ -4,9 +4,10 @@ import HiddenSquare from './HiddenSquare';
 import BoardSquare from './BoardSquare';
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
-  // Initialize guesses state with an object where each key is a square from hiddenSquares set to null
+  // Initialize guesses state with an array containing an object for the first guess
   const [guesses, setGuesses] = useState([hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: null}), {})]);
-  const [guessesResults, setGuessesResults] = useState({}); // Now an object for holding guess results
+  // Initialize an array to track the results of each guess
+  const [guessesResults, setGuessesResults] = useState([]);
 
   const getPieceBySquareName = (squareName) => {
     const columnIndex = squareName.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -15,50 +16,43 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
   };
 
   const onGuessClick = () => {
-    let newGuessesResults = {};
-    let validGuess = true; // Assume the guess is valid for simplicity, validation logic to be added as needed
+    let newGuessResults = {};
+    let validGuess = true; // Assume the guess is valid for simplicity
     if (validGuess) {
       const lastGuess = guesses[guesses.length - 1];
       hiddenSquares.forEach(squareName => {
         const guessedPiece = lastGuess[squareName];
         const correctPiece = getPieceBySquareName(squareName);
-        const hiddenPieces=hiddenSquares.map(x=>getPieceBySquareName(x));
-
+        const hiddenPieces = hiddenSquares.map(x => getPieceBySquareName(x));
 
         if (correctPiece === guessedPiece) {
-          newGuessesResults[squareName] = "green";
-        } else if (hiddenPieces.includes(guessedPiece)) {
-          newGuessesResults[squareName] = "yellow";
+          newGuessResults[squareName] = "green";
+        } else if (hiddenPieces.includes(guessedPiece) && guessedPiece !== null) {
+          newGuessResults[squareName] = "yellow";
         } else {
-          newGuessesResults[squareName] = "gray";
+          newGuessResults[squareName] = "gray";
         }
       });
-      setGuessesResults(newGuessesResults); // Update state with new results
-    }
+      // Append the results of the current guess
+      setGuessesResults([...guessesResults, newGuessResults]);
 
-    // Optionally, prepare for a new guess
-    setGuesses([...guesses, hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: null}), {})]);
+      // Prepare for a new guess, initializing it with the state of the last guess
+      setGuesses([...guesses, {...lastGuess}]);
+    }
   };
 
   const onPieceDrop = (squareName, pieceCode) => {
-    // Only update the state if there's at least one guess in the history
-    if (guesses.length > 0) {
-      setGuesses(prevGuesses => {
-        // Take all but the last guess as is, we're going to modify the last guess
-        const allButLast = prevGuesses.slice(0, -1);
-  
-        // Copy the last guess object and update it with the new piece code for the dropped piece
-        const lastGuessUpdated = {
-          ...prevGuesses[prevGuesses.length - 1],
-          [squareName]: pieceCode,
-        };
-  
-        // Return the new array of guesses with the updated last guess
-        return [...allButLast, lastGuessUpdated];
-      });
-    }
+    setGuesses(prevGuesses => {
+      const newGuesses = [...prevGuesses];
+      newGuesses[newGuesses.length - 1] = { ...newGuesses[newGuesses.length - 1], [squareName]: pieceCode };
+      return newGuesses;
+    });
   };
-  
+
+  // Function to retrieve the guess result for a specific square
+  const getGuessResult = (squareName) => {
+    return guessesResults.length > 0 ? guessesResults[guessesResults.length - 1][squareName] : undefined;
+  };
 
   return (
     <>
@@ -68,7 +62,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
             const squareName = String.fromCharCode(97 + colIndex) + (8 - rowIndex);
             const isHidden = hiddenSquares.includes(squareName);
             const isWhite = (rowIndex + colIndex) % 2 === 0;
-            const status = guessesResults[squareName]; // Retrieve status for this square
+            const status = getGuessResult(squareName); // Retrieve the latest guess result for this square
 
             if (isHidden) {
               return <HiddenSquare
@@ -76,7 +70,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                 correctPiece={piece}
                 isWhite={isWhite}
                 onPieceDrop={onPieceDrop}
-                status={status} // Pass status as a prop
+                status={status}
                 key={squareName}
               />;
             } else {

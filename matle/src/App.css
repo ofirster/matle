@@ -46,17 +46,25 @@
   
 
   
-  .guess-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+/* App.css or another relevant CSS file */
+
+.guess-button {
+  font-size: 20px; /* Makes text larger */
+  padding: 10px 20px; /* Larger clickable area */
+  background-color: #007bff; /* Example background color */
+  color: white; /* Text color */
+  border: none; /* Removes the default border */
+  border-radius: 5px; /* Optional: rounds the corners */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  display: block; /* Block display to enable margin auto */
+  margin: 20px auto; /* Centers the button horizontally */
+}
+
+/* Add styles for hover effect */
+.guess-button:hover {
+  background-color: #0056b3; /* Darker shade when hovered */
+}
+
   
   .guess-button:hover {
     background-color: #0056b3;
