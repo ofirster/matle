@@ -123,15 +123,16 @@
   
 
   
-  .green-status {
-    background-color: rgba(0, 255, 0, 0.5); /* Green with opacity */
-  }
-  
-  .yellow-status {
-    background-color: rgba(255, 255, 0, 0.5); /* Yellow with opacity */
-  }
-  
-  .gray-status {
-    background-color: rgba(128, 128, 128, 0.5); /* Gray with opacity */
-  }
-  
+/* App.css */
+
+.green {
+  background-color: rgba(0, 255, 0, 0.5); /* Green with opacity */
+}
+
+.yellow {
+  background-color: rgba(255, 255, 0, 0.5); /* Yellow with opacity */
+}
+
+.gray {
+  background-color: rgba(128, 128, 128, 0.5); /* Gray with opacity */
+}
