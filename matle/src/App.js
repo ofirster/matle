@@ -15,7 +15,8 @@ export default function App() {
     const row8 = [null, null, 'wk', 'wr', null, null, null, 'wr'];
   
     const board = [row1, row2, row3, row4, row5, row6, row7, row8];
-    const hiddenSquares = ['c1', 'b2', 'e1', 'a4', 'b7'];
+    const hiddenSquares = ['c1', 'b2', 'e1', 'd1', 'b7'];
+    // const hiddenSquares = [];
 
     function handleGuess()
     {
@@ -25,8 +26,7 @@ return <>
 <div className="chessboard-container">
     <ChessBoard chessBoard={board} hiddenSquares={hiddenSquares}></ChessBoard>
     </div>
-    <PieceSelector></PieceSelector>
-      <button className="guess-button" onClick={()=>handleGuess()} >Guess</button>
+    
       {/* <div className="guessesTitle">
       <h2>{hiddenSquares[0]}</h2>
       <h2>{hiddenSquares[1]}</h2>
