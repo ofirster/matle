@@ -9,7 +9,7 @@ const whitePieces = [
   { piece: 'wb', label: 'White Bishop' },
   { piece: 'wn', label: 'White Knight' },
   { piece: 'wp', label: 'White Pawn' },
-  { piece: null, label: 'Empty' },
+  { piece: '', label: 'Empty' },
 ];
 
 const blackPieces = [
@@ -19,7 +19,7 @@ const blackPieces = [
   { piece: 'bb', label: 'Black Bishop' },
   { piece: 'bn', label: 'Black Knight' },
   { piece: 'bp', label: 'Black Pawn' },
-  { piece: null, label: 'Empty' },
+  { piece: '', label: 'Empty' },
 
 ];
 

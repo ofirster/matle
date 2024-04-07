@@ -9,7 +9,7 @@ const BoardSquare = ({isWhite, piece, onClick }) => {
     isWhite?  "white" : "black"}` }>
 <div>
   {
-    piece!=null && getPiece(piece)
+    piece!=='' && getPiece(piece)
   }
 </div>
 

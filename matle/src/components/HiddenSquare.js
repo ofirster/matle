@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import getPiece from '../utils/PieceGenerator';
 
 const HiddenSquare = ({ squareName, isWhite, correctPiece, onPieceDrop, status }) => {
-  const [currentPiece, setCurrentPiece] = useState(null);
+  const [currentPiece, setCurrentPiece] = useState('');
 
   const handleDrop = (e) => {
     e.preventDefault();

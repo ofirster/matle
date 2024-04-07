@@ -4,8 +4,10 @@ import HiddenSquare from './HiddenSquare';
 import BoardSquare from './BoardSquare';
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
+
+  
   // Initialize guesses state with an array containing an object for the first guess
-  const [guesses, setGuesses] = useState([hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: null}), {})]);
+  const [guesses, setGuesses] = useState([hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: ''}), {})]);
   // Initialize an array to track the results of each guess
   const [guessesResults, setGuessesResults] = useState([]);
 
@@ -14,6 +16,8 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
     const rowIndex = 8 - parseInt(squareName[1], 10);
     return chessBoard[rowIndex][columnIndex];
   };
+
+  
 
   const onGuessClick = () => {
     let newGuessResults = {};
@@ -27,7 +31,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
         if (correctPiece === guessedPiece) {
           newGuessResults[squareName] = "green";
-        } else if (hiddenPieces.includes(guessedPiece) && guessedPiece !== null) {
+        } else if (hiddenPieces.includes(guessedPiece) && guessedPiece !== '') {
           newGuessResults[squareName] = "yellow";
         } else {
           newGuessResults[squareName] = "gray";
