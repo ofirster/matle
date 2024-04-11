@@ -30,13 +30,13 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
         const hiddenPieces = hiddenSquares.map(x => getPieceBySquareName(x));
 
         if (correctPiece === guessedPiece) {
-          newGuessResults[squareName] = "green";
-        } else if (hiddenPieces.includes(guessedPiece) && guessedPiece !== '') {
-          newGuessResults[squareName] = "yellow";
+          newGuessResults[squareName] = "correct-position";
+        } else if (hiddenPieces.includes(guessedPiece)) {
+          newGuessResults[squareName] = "wrong-position";
         } else {
-          newGuessResults[squareName] = "gray";
+          newGuessResults[squareName] = "incorrect";
         }
-      });
+      });      
       // Append the results of the current guess
       setGuessesResults([...guessesResults, newGuessResults]);
 

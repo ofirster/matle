@@ -52,8 +52,8 @@ export default function App() {
       return hiddenSquares;
   }
   
-  const hiddenSquares = generateHiddenSquares(board);
-    // const hiddenSquares = [];
+//   const hiddenSquares = generateHiddenSquares(board);
+    const hiddenSquares = ["a1","b4","c3", "c1", "b2"];
 
     function handleGuess()
     {

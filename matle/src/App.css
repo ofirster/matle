@@ -22,11 +22,11 @@
   }
 
 .black {
-	background-color: 	#769656;
+	background-color: 	#af8969
 }
 
 .white {
-	background-color: #eeeed2;
+	background-color: #eddab9;
 }
 
 .hidden {
@@ -108,18 +108,18 @@
   
   /* Feedback colors */
   .correct-position { /* Green */
-    background-color: #6aaa64;
-    border-color: #6aaa64;
+    background-color: #6ca965;
+    border-color: #6ca965;
   }
   
   .wrong-position { /* Yellow */
-    background-color: #c9b458;
-    border-color: #c9b458;
+    background-color:#c8b653;
+    border-color: #c8b653;
   }
   
   .incorrect { /* Gray */
-    background-color: #787c7e;
-    border-color: #787c7e;
+    background-color: #787c7f;
+    border-color: #787c7f;
   }
   
   /* For an empty square or default state */
@@ -143,4 +143,9 @@
 
 .gray {
   background-color: rgba(128, 128, 128, 0.5); /* Gray with opacity */
+}
+
+/* App.css */
+.last-clicked {
+  background-color: #cfd186; /* Change the background to yellow */
 }

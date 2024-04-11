@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GuessSquare from './GuessSquare';
 
 // Organize pieces by color for better structure
@@ -23,11 +23,22 @@ const blackPieces = [
 
 ];
 
-const PieceSelector = ({ onSelect }) => {
-    
+const PieceSelector = () => {
+  const [lastClicked, setLastClicked] = useState(null);
+
+  // Handle click on GuessSquare, update the last clicked piece
+  const handleGuessSquareClick = (piece) => {
+    setLastClicked(piece);
+  };
+
   // Render pieces as buttons or clickable elements
   const renderPiece = (pieceInfo) => (
-    <GuessSquare key={pieceInfo.piece} piece={pieceInfo.piece} onClick={() => onSelect(pieceInfo.piece)} />
+    <GuessSquare 
+      key={pieceInfo.piece} 
+      piece={pieceInfo.piece} 
+      onClick={handleGuessSquareClick} 
+      isLastClicked={pieceInfo.piece === lastClicked} // Pass whether this is the last clicked
+    />
   );
 
   return (
@@ -38,6 +49,7 @@ const PieceSelector = ({ onSelect }) => {
       <div className="black-pieces">
         {blackPieces.map(renderPiece)}
       </div>
+      <div>Last clicked: {lastClicked}</div>
     </div>
   );
 };

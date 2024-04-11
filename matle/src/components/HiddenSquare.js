@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import getPiece from '../utils/PieceGenerator';
 
-const HiddenSquare = ({ squareName, isWhite, correctPiece, onPieceDrop, status }) => {
+const HiddenSquare = ({ squareName, isWhite, correctPiece, onPieceDrop, status}) => {
+  // Use state to manage the current piece in the hidden square
   const [currentPiece, setCurrentPiece] = useState('');
+
+
 
   const handleDrop = (e) => {
     e.preventDefault();
