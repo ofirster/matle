@@ -58,6 +58,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
       newGuesses[newGuesses.length - 1] = { ...newGuesses[newGuesses.length - 1], [squareName]: pieceCode };
       return newGuesses;
     });
+    setLastClicked(null);
   };
 
   // Function to retrieve the guess result for a specific square
@@ -87,12 +88,12 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                 key={squareName}
               />;
             } else {
-              return <BoardSquare piece={piece} isWhite={isWhite} key={squareName} />;
+              return <BoardSquare squareName={squareName} piece={piece} isWhite={isWhite} key={squareName} />;
             }
           })}
         </div>
       ))}
-      <PieceSelector onSelect={handlePieceSelect}></PieceSelector>
+      <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
       <button className="guess-button"  onClick={onGuessClick}>Guess</button>
     </>
   );

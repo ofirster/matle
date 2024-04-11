@@ -22,16 +22,18 @@
   }
 
 .black {
-	background-color: 	#af8969
+	background-color: 	#af8969;
 }
 
 .white {
 	background-color: #eddab9;
 }
 
+
+
 .hidden {
     /* background-color: #f6c5b3	; */
-    box-shadow:0px 0px 0px 4px blue inset;
+    box-shadow:0px 0px 0px 2px blue inset;
 
 
 }
@@ -147,5 +149,41 @@
 
 /* App.css */
 .last-clicked {
-  background-color: #cfd186; /* Change the background to yellow */
+  background-color: #cfceec; /* Change the background to yellow */
+}
+
+.black-label {
+  position: absolute;
+  font-size: 8px;
+  user-select: none;  
+  font-weight: bold;
+  color: 	#af8969;
+}
+
+
+.white-label {
+  position: absolute;
+  font-size: 8px;
+  user-select: none;  
+  font-weight: bold;
+  color: 	#eddab9;
+}
+
+.bottom-left {
+  bottom: 2px;
+  left: 2px;
+}
+
+.top-right {
+  top: 2px;
+  right: 2px;
+}
+
+.square {
+  position: relative;
+  width: 100%; /* adjust based on your setup */
+  height: 100%; /* adjust based on your setup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

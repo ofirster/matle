@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import getPiece from '../utils/PieceGenerator';
 
 const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, status}) => {
+
+  const labelClass = isWhite ? 'black-label' : 'white-label'; // Set label color to be opposite of square color
+
+  const labels = (
+    <>
+      {squareName.charAt(0)==='h' && <div className={`label top-right ${labelClass}`}>{squareName.charAt(1)}</div>} 
+      {squareName.charAt(1)==='1' && <div className={`label bottom-left ${labelClass}`}>{squareName.charAt(0)}</div>} 
+    </>
+  );
+
   // Use state to manage the current piece in the hidden square
   const [currentPiece, setCurrentPiece] = useState('');
 
@@ -28,9 +38,11 @@ const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, s
       onClick={handleOnClick} // Apply the onClick handler
       onDrop={handleDrop} 
       onDragOver={handleDragOver}
-      className={`box hidden ${isWhite ? 'white' : 'black'} ${status}`}>
+      className={`box hidden ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
       {currentPiece && getPiece(currentPiece)}
+      {labels}
     </div>
+    
   );
 };
 

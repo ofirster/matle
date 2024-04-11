@@ -1,18 +1,42 @@
 import "./App.css";
 import ChessBoard from "./components/Chessboard"
+import boards from './boards.json';  // Assuming the JSON file is in the src folder
+
+
+
 
 export default function App() {
 
-    const row1 = ['br', '', '', '', 'br', '', '', ''];
-    const row2 = ['bp', '', '', '', '', '', 'bb', 'bk'];
-    const row3 = ['', '', 'bp', '', '', '', 'bp', ''];
-    const row4 = ['', '', 'bp', 'bp', '', 'wp', 'wp', 'bn'];
-    const row5 = ['', '', '', '', '', '', '', 'wp'];
-    const row6 = ['', '', '', '', '', '', 'wq', ''];
-    const row7 = ['wp', 'bq', '', 'wn', '', '', '', ''];
-    const row8 = ['', '', 'wk', 'wr', '', '', '', 'wr'];
-  
-    const board = [row1, row2, row3, row4, row5, row6, row7, row8];
+
+    function stringToBoard(boardString) {
+        // Split the string into lines (rows of the chessboard)
+        const rows = boardString.split('\n');
+    
+        // Initialize an empty board array
+        const board = [];
+    
+        // Map from single-letter codes to your internal representation
+        const pieceMap = {
+            'r': 'br', 'n': 'bn', 'b': 'bb', 'q': 'bq', 'k': 'bk', 'p': 'bp',
+            'R': 'wr', 'N': 'wn', 'B': 'wb', 'Q': 'wq', 'K': 'wk', 'P': 'wp',
+            '.': ''
+        };
+    
+        // Iterate over each row in the rows array
+        rows.forEach(row => {
+            const pieces = row.trim().split(/\s+/); // Split the row by spaces to get pieces
+            const boardRow = pieces.map(piece => pieceMap[piece] || ''); // Map each piece to its full form
+            board.push(boardRow); // Add the mapped row to the board
+        });
+    
+        return board;
+    }
+
+
+   
+    // const board = [row1, row2, row3, row4, row5, row6, row7, row8];
+    const boardStr = boards[Math.floor(Math.random() * boards.length)];
+    const board = stringToBoard(boardStr)
     function generateHiddenSquares(board) {
       const hiddenSquares = [];
       
@@ -52,8 +76,7 @@ export default function App() {
       return hiddenSquares;
   }
   
-//   const hiddenSquares = generateHiddenSquares(board);
-    const hiddenSquares = ["a1","b4","c3", "c1", "b2"];
+  let hiddenSquares = generateHiddenSquares(board);
 
     function handleGuess()
     {

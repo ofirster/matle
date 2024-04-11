@@ -21,8 +21,8 @@ const blackPieces = [
   { piece: 'bp', label: 'Black Pawn' },
 ];
 
-const PieceSelector = ({ onSelect }) => {
-  const [lastClicked, setLastClicked] = useState(null);
+const PieceSelector = ({ onSelect, lastClicked, setLastClicked }) => {
+  // const [lastClicked, setLastClicked] = useState(null);
 
   // Handler function to manage click events on GuessSquare
   const handleGuessSquareClick = (piece) => {
@@ -48,7 +48,6 @@ const PieceSelector = ({ onSelect }) => {
       <div className="black-pieces">
         {blackPieces.map(renderPiece)}
       </div>
-      <div>Last clicked: {lastClicked}</div> {/* Optionally display the last clicked piece */}
     </div>
   );
 };
