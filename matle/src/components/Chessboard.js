@@ -10,6 +10,13 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
   const [guesses, setGuesses] = useState([hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: ''}), {})]);
   // Initialize an array to track the results of each guess
   const [guessesResults, setGuessesResults] = useState([]);
+  const [lastClicked, setLastClicked] = useState(null); // State to track the last clicked piece from PieceSelector
+
+
+    // Function to handle piece selection update from PieceSelector
+    const handlePieceSelect = (pieceCode) => {
+      setLastClicked(pieceCode);
+    };
 
   const getPieceBySquareName = (squareName) => {
     const columnIndex = squareName.charCodeAt(0) - 'a'.charCodeAt(0);
@@ -45,7 +52,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
     }
   };
 
-  const onPieceDrop = (squareName, pieceCode) => {
+  const onPieceAssign = (squareName, pieceCode) => {
     setGuesses(prevGuesses => {
       const newGuesses = [...prevGuesses];
       newGuesses[newGuesses.length - 1] = { ...newGuesses[newGuesses.length - 1], [squareName]: pieceCode };
@@ -73,8 +80,10 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                 squareName={squareName}
                 correctPiece={piece}
                 isWhite={isWhite}
-                onPieceDrop={onPieceDrop}
+                onPieceDrop={onPieceAssign}
                 status={status}
+                onClick={() => onPieceAssign(squareName, lastClicked)} // Update to pass onClick prop
+                lastClicked={lastClicked}
                 key={squareName}
               />;
             } else {
@@ -83,8 +92,8 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
           })}
         </div>
       ))}
-      <PieceSelector />
-      <button className="guess-button" onClick={onGuessClick}>Guess</button>
+      <PieceSelector onSelect={handlePieceSelect}></PieceSelector>
+      <button className="guess-button"  onClick={onGuessClick}>Guess</button>
     </>
   );
 };

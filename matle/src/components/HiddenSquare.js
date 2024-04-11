@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import getPiece from '../utils/PieceGenerator';
 
-const HiddenSquare = ({ squareName, isWhite, correctPiece, onPieceDrop, status}) => {
+const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, status}) => {
   // Use state to manage the current piece in the hidden square
   const [currentPiece, setCurrentPiece] = useState('');
 
+
+  const handleOnClick = () => {
+    onClick();
+    setCurrentPiece(lastClicked);
+  };
 
 
   const handleDrop = (e) => {
@@ -20,6 +25,7 @@ const HiddenSquare = ({ squareName, isWhite, correctPiece, onPieceDrop, status})
 
   return (
     <div 
+      onClick={handleOnClick} // Apply the onClick handler
       onDrop={handleDrop} 
       onDragOver={handleDragOver}
       className={`box hidden ${isWhite ? 'white' : 'black'} ${status}`}>

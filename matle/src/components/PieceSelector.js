@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GuessSquare from './GuessSquare';
 
-// Organize pieces by color for better structure
+// Define arrays for white and black pieces
 const whitePieces = [
   { piece: 'wk', label: 'White King' },
   { piece: 'wq', label: 'White Queen' },
@@ -19,25 +19,24 @@ const blackPieces = [
   { piece: 'bb', label: 'Black Bishop' },
   { piece: 'bn', label: 'Black Knight' },
   { piece: 'bp', label: 'Black Pawn' },
-  { piece: '', label: 'Empty' },
-
 ];
 
-const PieceSelector = () => {
+const PieceSelector = ({ onSelect }) => {
   const [lastClicked, setLastClicked] = useState(null);
 
-  // Handle click on GuessSquare, update the last clicked piece
+  // Handler function to manage click events on GuessSquare
   const handleGuessSquareClick = (piece) => {
     setLastClicked(piece);
+    onSelect(piece); // Call the passed onSelect function from parent with the selected piece
   };
 
-  // Render pieces as buttons or clickable elements
+  // Function to render GuessSquare components for each piece
   const renderPiece = (pieceInfo) => (
     <GuessSquare 
-      key={pieceInfo.piece} 
-      piece={pieceInfo.piece} 
-      onClick={handleGuessSquareClick} 
-      isLastClicked={pieceInfo.piece === lastClicked} // Pass whether this is the last clicked
+      key={pieceInfo.piece}
+      piece={pieceInfo.piece}
+      onClick={handleGuessSquareClick} // Set click handler
+      isLastClicked={pieceInfo.piece === lastClicked} // Pass isLastClicked flag
     />
   );
 
@@ -49,7 +48,7 @@ const PieceSelector = () => {
       <div className="black-pieces">
         {blackPieces.map(renderPiece)}
       </div>
-      <div>Last clicked: {lastClicked}</div>
+      <div>Last clicked: {lastClicked}</div> {/* Optionally display the last clicked piece */}
     </div>
   );
 };
