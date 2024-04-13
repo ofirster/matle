@@ -3,7 +3,7 @@ import getPiece from '../utils/PieceGenerator';
 
 const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, status}) => {
 
-  const labelClass = isWhite ? 'black-label' : 'white-label'; // Set label color to be opposite of square color
+  const labelClass = isWhite ? 'hidden-black-label' : 'hidden-white-label'; // Set label color to be opposite of square color
 
   const labels = (
     <>
@@ -41,6 +41,7 @@ const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, s
       className={`box hidden ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
       {currentPiece && getPiece(currentPiece)}
       {labels}
+      {!currentPiece && <label className={labelClass}>{squareName}</label>}
     </div>
     
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PieceSelector from './PieceSelector';
 import HiddenSquare from './HiddenSquare';
 import BoardSquare from './BoardSquare';
+import GuessTable from './GuessTable';
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
@@ -93,8 +94,13 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
           })}
         </div>
       ))}
+      {/* <button className="guess-button"  onClick={onGuessClick}>Guess</button> */}
       <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
-      <button className="guess-button"  onClick={onGuessClick}>Guess</button>
+      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
+      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
+      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
+      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
+      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
     </>
   );
 };
