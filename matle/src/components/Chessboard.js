@@ -3,6 +3,7 @@ import PieceSelector from './PieceSelector';
 import HiddenSquare from './HiddenSquare';
 import BoardSquare from './BoardSquare';
 import GuessTable from './GuessTable';
+import PieceKeyboard from '../keyboard/PieceKeyboard';
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
@@ -95,12 +96,10 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
         </div>
       ))}
       {/* <button className="guess-button"  onClick={onGuessClick}>Guess</button> */}
-      <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
       <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
+      {/* <GuessTable hiddenSquares={hiddenSquares}></GuessTable> */}
+      {/* <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} /> */}
+      <PieceKeyboard></PieceKeyboard>
     </>
   );
 };

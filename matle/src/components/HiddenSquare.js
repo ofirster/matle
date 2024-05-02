@@ -41,7 +41,7 @@ const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, s
       className={`box hidden ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
       {currentPiece && getPiece(currentPiece)}
       {labels}
-      {!currentPiece && <label className={labelClass}>{squareName}</label>}
+      {!currentPiece && <label className={labelClass}>{}?</label>}
     </div>
     
   );

@@ -48,8 +48,8 @@
   
 
   .guess-box > div {
-    width: 50px; /* Adjust based on your preference */
-    height: 50px; /* Adjust based on your preference */
+    width: 45px; /* Adjust based on your preference */
+    height: 45px; /* Adjust based on your preference */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,8 +107,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px; /* Adjust based on your layout */
-    height: 50px; /* Adjust based on your layout */
+    width: 45px; /* Adjust based on your layout */
+    height: 45px; /* Adjust based on your layout */
     margin: 3px;
     font-size: 24px; /* Adjust based on your layout */
     font-weight: bold;
@@ -226,3 +226,64 @@
   margin-bottom: 2px;
   margin-top: 2px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.keyboard-base {
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(8, 40px); /* Matches the number of keys in the largest row */
+  grid-template-rows: repeat(2, 50px);
+  grid-gap: 2px;
+  width: fit-content; /* Adjusts the width of the grid to its content */
+  left: 50%; /* Center the entire keyboard within its parent */
+  transform: translateX(-50%); /* Offset the shift by half of its own width to truly center it */
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center; /* This will center the keys in the flex container */
+  grid-column: span 8; /* Makes each row span all 8 columns of the grid */
+}
+
+
+
+.key {
+  background-color: lightgray;
+  border: 2px solid white;
+  border-radius: 5px;
+  grid-column: span 2;
+  font-size: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.key img { /* Assuming you use <img> tag to render SVGs */
+  width: 90%; /* Adjust the size of SVG inside the key */
+  height: auto;
+}
+
+.key:hover {
+border: 2px solid #eeeeee;
+
+}
+
