@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PieceSelector from './PieceSelector';
 import HiddenSquare from './HiddenSquare';
 import BoardSquare from './BoardSquare';
-import GuessTable from './GuessTable';
+import GuessTable from './GuessTable'
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
@@ -16,6 +16,8 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
     // Function to handle piece selection update from PieceSelector
     const handlePieceSelect = (pieceCode) => {
+      if (pieceCode===lastClicked) // re-clicked
+        pieceCode=null;
       setLastClicked(pieceCode);
     };
 
@@ -30,7 +32,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
   const isEveryHiddenSquareFilled = () => {
     const lastGuess = guesses[guesses.length - 1];
-    return hiddenSquares.every(square => lastGuess[square] !== '');
+    return hiddenSquares.every(square => lastGuess[square] !== null);
   };
 
   const onGuessClick = () => {
