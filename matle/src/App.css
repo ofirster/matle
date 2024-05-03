@@ -6,6 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Key addition: ensures children are positioned relative to this box */
+
   }
   
   /* Additional adjustments for responsiveness */
@@ -33,7 +35,7 @@
 
 .hidden {
     /* background-color: #f6c5b3	; */
-    box-shadow:0px 0px 0px 5px #007bff inset;
+    box-shadow:0px 0px 0px 3px #007bff inset;
 
 
 }
@@ -225,4 +227,20 @@
   gap: 3px; /* Adds space between the boxes */
   margin-bottom: 2px;
   margin-top: 2px;
+}
+
+.label {
+  position: absolute;
+  font-size: 0.5rem; /* Adjust as necessary */
+  padding: 3px; /* Adds some padding inside the label */
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
 }

@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import getPiece from '../utils/PieceGenerator';
 
-const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, status}) => {
-
-  const labelClass = isWhite ? 'hidden-black-label' : 'hidden-white-label'; // Set label color to be opposite of square color
+const HiddenSquare = ({ squareName, isWhite, onClick, onPieceDrop, status, lastClicked }) => {
+  const labelClass = isWhite ? 'hidden-black-label' : 'hidden-white-label';
 
   const labels = (
     <>
-      {squareName.charAt(0)==='h' && <div className={`label top-right ${labelClass}`}>{squareName.charAt(1)}</div>} 
-      {squareName.charAt(1)==='1' && <div className={`label bottom-left ${labelClass}`}>{squareName.charAt(0)}</div>} 
+      {squareName.charAt(1) === '1' && <div className={`label bottom-left ${labelClass}`}>{squareName.charAt(0)}</div>}
+      {squareName.charAt(0) === 'h' && <div className={`label top-right ${labelClass}`}>{squareName.charAt(1)}</div>}
     </>
   );
 
-  // Use state to manage the current piece in the hidden square
   const [currentPiece, setCurrentPiece] = useState('');
-
 
   const handleOnClick = () => {
     onClick();
     setCurrentPiece(lastClicked);
   };
-
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -34,16 +30,12 @@ const HiddenSquare = ({ squareName, isWhite, onClick,lastClicked, onPieceDrop, s
   };
 
   return (
-    <div 
-      onClick={handleOnClick} // Apply the onClick handler
-      onDrop={handleDrop} 
-      onDragOver={handleDragOver}
-      className={`box hidden ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
+    <div onClick={handleOnClick} onDrop={handleDrop} onDragOver={handleDragOver}
+         className={`box hidden ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
       {currentPiece && getPiece(currentPiece)}
       {labels}
       {!currentPiece && <label className={labelClass}>{"?"}</label>}
     </div>
-    
   );
 };
 
