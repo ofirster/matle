@@ -94,13 +94,8 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
           })}
         </div>
       ))}
-      {/* <button className="guess-button"  onClick={onGuessClick}>Guess</button> */}
+      <button className="guess-button"  onClick={onGuessClick}>Guess</button>
       <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
-      <GuessTable hiddenSquares={hiddenSquares}></GuessTable>
     </>
   );
 };

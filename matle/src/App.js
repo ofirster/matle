@@ -56,9 +56,9 @@ export default function App() {
           return false;
       };
   
-      const shouldSelectKing = () => Math.random() < 0.8;
+      const shouldSelectKing = () => Math.random() < 0.95;
       const shouldSelectAdjacent = () => Math.random() < 0.8;
-      const shouldSelectNull = () => Math.random() < 0.1;
+      const shouldSelectNull = () => Math.random() < 0.05;
   
       while (hiddenSquares.length < 5) {
           const row = randomIndex(numRows);
