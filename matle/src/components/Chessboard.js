@@ -78,6 +78,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
   return (
     <>
+    <div className="chessboard-container">
       {chessBoard.map((row, rowIndex) => (
         <div className="row" key={rowIndex}>
           {row.map((piece, colIndex) => {
@@ -103,12 +104,11 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
           })}
         </div>
       ))}
+    </div>
+    <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
       <div class="guess-button-container">
-      <button className="guess-button" onClick={onGuessClick} disabled={!isEveryHiddenSquareFilled()}>
-        Guess!
-      </button>
+      <button className="guess-button" onClick={onGuessClick} disabled={!isEveryHiddenSquareFilled()}>Guess!</button>
       </div>
-      <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
     </>
   );
 }  

@@ -83,9 +83,7 @@ export default function App() {
       console.log("guess")
     }
 return (
-<div className="chessboard-container">
     <ChessBoard chessBoard={board} hiddenSquares={hiddenSquares}></ChessBoard>
-    </div>
    
       
 );

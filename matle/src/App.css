@@ -14,9 +14,7 @@ body, .app-container {
   color: #e0e0e0; /* Light gray for readable contrast */
 }
 
-.box, .guess-square {
-  border-color: #ffffff; /* Darker borders for a subtle effect */
-}
+
 
 @media (max-width: 768px) {
   .piece-img {
@@ -112,22 +110,28 @@ body, .app-container {
   background-color: #4CAF50; /* Green background */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 20px; /* Smaller padding */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px; /* Smaller font size */
+  margin: 4px 2px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 5px; /* Adds a margin around the button */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 3px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
 
-  /* remove justify-self: center; as it's not needed with the new container setup */
+.guess-button:hover {
+  background-color: #45a049; /* Slightly lighter green on hover */
+  transform: scale(1.05); /* Slight increase in size on hover */
 }
 
 .guess-button:disabled {
   background-color: #ccc; /* Gray background when disabled */
   color: #666;
   cursor: not-allowed;
+  box-shadow: none; /* No shadow when disabled */
 }
 
 .guess-counter-container {
@@ -144,19 +148,11 @@ body, .app-container {
 
 /* Base style for the squares */
 .guess-square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: var(--square-size);
-    height: var(--square-size);
-    margin: 3px;
-    font-size: 24px; /* Adjust based on your layout */
-    font-weight: bold;
+    margin: 2px;
     color: #fff;
-    text-transform: uppercase;
-    border: 1px solid #444; /* Subtle border for all squares */
+    border: 1px solid #666565; /* Subtle border for all squares */
     user-select: none;
-    background-color: rgba(73, 73, 73, 0.464);
+    background-color: rgb(62, 61, 61);
   }
   
   /* Feedback colors */
