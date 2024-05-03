@@ -59,7 +59,8 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
         } else {
           newGuessResults[squareName] = "incorrect";
         }
-      });      
+      });  
+
       // Append the results of the current guess
       setGuessesResults([...guessesResults, newGuessResults]);
 
@@ -113,12 +114,12 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
     </div>
     <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
       <div class="guess-button-container">
-      <button className="guess-button" onClick={onGuessClick} disabled={isGuessDisabled()}>Guess!</button>
+      <button className="guess-button"  onClick={onGuessClick} disabled={isGuessDisabled()}>Guess!</button>
       </div>
       <label>Guess Left: {Math.max(0,guessesAllowed-guessesResults.length)}/{guessesAllowed}</label>
-
     </>
   );
 }  
 
 export default Chessboard;
+
