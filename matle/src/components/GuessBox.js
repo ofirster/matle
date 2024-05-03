@@ -35,7 +35,7 @@ const GuessBox = ({ squareName, onClick,lastClicked, onPieceDrop, status}) => {
 
   return (
     <div 
-      className={`guess-box box hidden ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
+      className={`result-box box  ${isWhite ? 'white' : 'black'} ${status} ${lastClicked ? 'last-clicked' : ''}`}>
         <label className={labelClass}>{squareName}</label>
     </div>
     

@@ -18,7 +18,7 @@ body, .app-container {
 
 @media (max-width: 768px) {
   .piece-img {
-    width: 88%; /* You might want smaller pieces on smaller screens */
+    width: 80%;
   }
 }
 
@@ -89,6 +89,17 @@ body, .app-container {
   
 
   .guess-box > div {
+    width: var(--square-size);
+    height: var(--square-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:0px 0px 0px 2px black inset;
+   
+  }
+
+
+  .result-box > div {
     width: var(--square-size);
     height: var(--square-size);
     display: flex;

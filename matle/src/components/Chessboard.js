@@ -6,9 +6,10 @@ import GuessTable from './GuessTable'
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
+  const guessesAllowed=5;
   
   // Initialize guesses state with an array containing an object for the first guess
-  const [guesses, setGuesses] = useState([hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: ''}), {})]);
+  const [guesses, setGuesses] = useState([hiddenSquares.reduce((acc, cur) => ({...acc, [cur]: null}), {})]);
   // Initialize an array to track the results of each guess
   const [guessesResults, setGuessesResults] = useState([]);
   const [lastClicked, setLastClicked] = useState(null); // State to track the last clicked piece from PieceSelector
@@ -30,6 +31,9 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
     return res;
   };
 
+  const isGuessDisabled= () =>{
+   return guesses.length>guessesAllowed || !isEveryHiddenSquareFilled() || lastClicked!==null;
+  }
   const isEveryHiddenSquareFilled = () => {
     const lastGuess = guesses[guesses.length - 1];
     return hiddenSquares.every(square => lastGuess[square] !== null);
@@ -109,8 +113,10 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
     </div>
     <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
       <div class="guess-button-container">
-      <button className="guess-button" onClick={onGuessClick} disabled={!isEveryHiddenSquareFilled()}>Guess!</button>
+      <button className="guess-button" onClick={onGuessClick} disabled={isGuessDisabled()}>Guess!</button>
       </div>
+      <label>Guess Left: {Math.max(0,guessesAllowed-guessesResults.length)}/{guessesAllowed}</label>
+
     </>
   );
 }  
