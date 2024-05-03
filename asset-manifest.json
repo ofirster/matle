@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/matle/static/css/main.d8ebd7db.css",
-    "main.js": "/matle/static/js/main.9fe4cabe.js",
+    "main.css": "/matle/static/css/main.22686ed0.css",
+    "main.js": "/matle/static/js/main.f1958c52.js",
     "static/js/453.cc49e222.chunk.js": "/matle/static/js/453.cc49e222.chunk.js",
     "static/media/br.svg": "/matle/static/media/br.fdc575582c2cbe2ec82093702945226f.svg",
     "static/media/bn.svg": "/matle/static/media/bn.7930be9e07b51bc0e069b1d77e31261a.svg",
@@ -16,12 +16,12 @@
     "static/media/wp.svg": "/matle/static/media/wp.50273cc6d86861932d0a01c38274009a.svg",
     "static/media/wk.svg": "/matle/static/media/wk.5d58f1999749c1b5ef5bc1699c38b2f7.svg",
     "index.html": "/matle/index.html",
-    "main.d8ebd7db.css.map": "/matle/static/css/main.d8ebd7db.css.map",
-    "main.9fe4cabe.js.map": "/matle/static/js/main.9fe4cabe.js.map",
+    "main.22686ed0.css.map": "/matle/static/css/main.22686ed0.css.map",
+    "main.f1958c52.js.map": "/matle/static/js/main.f1958c52.js.map",
     "453.cc49e222.chunk.js.map": "/matle/static/js/453.cc49e222.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8ebd7db.css",
-    "static/js/main.9fe4cabe.js"
+    "static/css/main.22686ed0.css",
+    "static/js/main.f1958c52.js"
   ]
 }
