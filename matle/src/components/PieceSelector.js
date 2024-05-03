@@ -22,8 +22,6 @@ const blackPieces = [
 ];
 
 const PieceSelector = ({ onSelect, lastClicked, setLastClicked }) => {
-  // const [lastClicked, setLastClicked] = useState(null);
-
   // Handler function to manage click events on GuessSquare
   const handleGuessSquareClick = (piece) => {
     setLastClicked(piece);
