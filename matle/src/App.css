@@ -41,6 +41,8 @@
 }
 
 
+
+
 .piece-selector > div {
     display: flex;
     margin-bottom: 10px; /* Space between rows */
@@ -60,44 +62,33 @@
     
   }
   
-/* App.css or another relevant CSS file */
+/* Container holding the guess button */
+.guess-button-container {
+  display: flex;
+  justify-content: center; /* Centers the button horizontally within the container */
+  width: 100%; /* Takes full width of the parent element to allow centering */
+}
 
 .guess-button {
-  font-size: 20px; /* Makes text larger */
-  padding: 10px 20px; /* Larger clickable area */
-  background-color: #007bff; /* Example background color */
-  color: white; /* Text color */
-  border: none; /* Removes the default border */
-  border-radius: 5px; /* Optional: rounds the corners */
-  cursor: pointer; /* Changes the cursor to a pointer on hover */
-  display: block; /* Block display to enable margin auto */
-  margin: 20px auto; /* Centers the button horizontally */
+  background-color: #4CAF50; /* Green background */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px; /* Adds a margin around the button */
+
+  /* remove justify-self: center; as it's not needed with the new container setup */
 }
 
-/* Add styles for hover effect */
-.guess-button:hover {
-  background-color: #0056b3; /* Darker shade when hovered */
-}
-
-  
-  .guess-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-  }
-  
-  .guess-button:active {
-    background-color: #004085;
-    transform: translateY(1px);
-  }
-  
-  .guess-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-  }
-
-  .guessesTitle {
-	display: flex;
-    margin-right: 10px;
+.guess-button:disabled {
+  background-color: #ccc; /* Gray background when disabled */
+  color: #666;
+  cursor: not-allowed;
 }
 
 
@@ -124,16 +115,22 @@
   .correct-position { /* Green */
     background-color: #6ca965;
     border-color: #6ca965;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+
   }
   
   .wrong-position { /* Yellow */
     background-color:#c8b653;
     border-color: #c8b653;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+
   }
   
   .incorrect { /* Gray */
     background-color: #787c7f;
     border-color: #787c7f;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+
   }
   
   /* For an empty square or default state */

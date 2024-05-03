@@ -22,12 +22,21 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
   const getPieceBySquareName = (squareName) => {
     const columnIndex = squareName.charCodeAt(0) - 'a'.charCodeAt(0);
     const rowIndex = 8 - parseInt(squareName[1], 10);
-    return chessBoard[rowIndex][columnIndex];
+    let res = chessBoard[rowIndex][columnIndex];
+    if (res==='')
+      res='empty';
+    return res;
   };
 
-  
+  const isEveryHiddenSquareFilled = () => {
+    const lastGuess = guesses[guesses.length - 1];
+    return hiddenSquares.every(square => lastGuess[square] !== '');
+  };
 
   const onGuessClick = () => {
+    if (!isEveryHiddenSquareFilled()) {
+      return; // Prevent guessing unless all squares are filled
+    }
     let newGuessResults = {};
     let validGuess = true; // Assume the guess is valid for simplicity
     if (validGuess) {
@@ -75,8 +84,8 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
             const squareName = String.fromCharCode(97 + colIndex) + (8 - rowIndex);
             const isHidden = hiddenSquares.includes(squareName);
             const isWhite = (rowIndex + colIndex) % 2 === 0;
-            const status = getGuessResult(squareName); // Retrieve the latest guess result for this square
-
+            const status = getGuessResult(squareName);
+  
             if (isHidden) {
               return <HiddenSquare
                 squareName={squareName}
@@ -84,7 +93,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                 isWhite={isWhite}
                 onPieceDrop={onPieceAssign}
                 status={status}
-                onClick={() => onPieceAssign(squareName, lastClicked)} // Update to pass onClick prop
+                onClick={() => onPieceAssign(squareName, lastClicked)}
                 lastClicked={lastClicked}
                 key={squareName}
               />;
@@ -94,10 +103,14 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
           })}
         </div>
       ))}
-      <button className="guess-button"  onClick={onGuessClick}>Guess</button>
+      <div class="guess-button-container">
+      <button className="guess-button" onClick={onGuessClick} disabled={!isEveryHiddenSquareFilled()}>
+        Guess!
+      </button>
+      </div>
       <PieceSelector onSelect={handlePieceSelect} lastClicked={lastClicked} setLastClicked={setLastClicked} />
     </>
   );
-};
+}  
 
 export default Chessboard;
