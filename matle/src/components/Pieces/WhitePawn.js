@@ -2,6 +2,6 @@ import mySvgImage from '../../icons/wp.svg';
 
 
 export default function MyComponent() {
-    return <img draggable={false} src={mySvgImage} alt='mySvgImage' />;
+    return <img draggable={false} src={mySvgImage} alt='mySvgImage' className="piece-img" />;
   }
   
