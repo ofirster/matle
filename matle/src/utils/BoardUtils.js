@@ -74,19 +74,19 @@ export function getGame()
         }            
     } 
 
-    let hiddenSquares=[getSquareName(whiteKingCell[0],whiteKingCell[1]),getSquareName(blackKingCell[0],blackKingCell[1])]
-    let nearestCells=[]
+    let hiddenSquares=[]
+    let cellsToHide=[blackKingCell,whiteKingCell]
     for (let radius = 1; radius <= 2; radius++) {        
         let nearWhiteKing=getNearestCells(whiteKingCell[0],whiteKingCell[1],radius);
-        nearestCells.push(...nearWhiteKing)        
+        cellsToHide.push(...nearWhiteKing)        
     }    
     for (let radius = 1; radius <= 2; radius++) {        
         let nearBlackKing=getNearestCells(blackKingCell[0],blackKingCell[1],radius);
-        nearestCells.push(...nearBlackKing)        
+        cellsToHide.push(...nearBlackKing)        
     }    
-    nearestCells=shuffleArray(nearestCells);
-    for (let i = 0; i < Math.min(3,nearestCells.length); i++) {
-        hiddenSquares.push(getSquareName(nearestCells[i][0],nearestCells[i][1]));
+    cellsToHide=shuffleArray(cellsToHide);
+    for (let i = 0; i < Math.min(5,cellsToHide.length); i++) {
+        hiddenSquares.push(getSquareName(cellsToHide[i][0],cellsToHide[i][1]));
     }
 
 
