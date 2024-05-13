@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/matle/static/css/main.0d63106f.css",
-    "main.js": "/matle/static/js/main.ee552d52.js",
+    "main.js": "/matle/static/js/main.0d4d4667.js",
     "static/js/453.cc49e222.chunk.js": "/matle/static/js/453.cc49e222.chunk.js",
     "static/media/br.svg": "/matle/static/media/br.fdc575582c2cbe2ec82093702945226f.svg",
     "static/media/bn.svg": "/matle/static/media/bn.7930be9e07b51bc0e069b1d77e31261a.svg",
@@ -17,11 +17,11 @@
     "static/media/wk.svg": "/matle/static/media/wk.5d58f1999749c1b5ef5bc1699c38b2f7.svg",
     "index.html": "/matle/index.html",
     "main.0d63106f.css.map": "/matle/static/css/main.0d63106f.css.map",
-    "main.ee552d52.js.map": "/matle/static/js/main.ee552d52.js.map",
+    "main.0d4d4667.js.map": "/matle/static/js/main.0d4d4667.js.map",
     "453.cc49e222.chunk.js.map": "/matle/static/js/453.cc49e222.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0d63106f.css",
-    "static/js/main.ee552d52.js"
+    "static/js/main.0d4d4667.js"
   ]
 }
