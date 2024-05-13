@@ -92,6 +92,11 @@ export function getGame() {
     );
     cellsToHide.push(...nearBlackKing);
   }
+  let cellsWithLessBlanks = cellsToHide.filter((cell) => {
+    if (board[cell[0]][cell[1]] != "") return true;
+    return Math.random() > 0.8;
+  });
+  if (cellsWithLessBlanks.length >= 5) cellsToHide = cellsWithLessBlanks;
   cellsToHide = shuffleArray(cellsToHide);
   for (let i = 0; i < Math.min(5, cellsToHide.length); i++) {
     hiddenSquares.push(getSquareName(cellsToHide[i][0], cellsToHide[i][1]));
