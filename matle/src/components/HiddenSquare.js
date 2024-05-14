@@ -6,7 +6,7 @@ const HiddenSquare = ({
   isWhite,
   onClick,
   onPieceDrop,
-  status,
+  initialStatus, // Rename prop to initialStatus to avoid direct mutation and confusion
   selectedPiece,
   lastClicked,
   isSelected,
@@ -29,15 +29,27 @@ const HiddenSquare = ({
   );
 
   const [currentPiece, setCurrentPiece] = useState(selectedPiece);
+  const [status, setStatus] = useState(initialStatus); // Manage status as state
 
   // Update the currentPiece whenever selectedPiece changes
   useEffect(() => {
     setCurrentPiece(selectedPiece);
   }, [selectedPiece]);
 
+  // At the top of HiddenSquare component
+  useEffect(() => {
+    console.log("initialStatus received:", initialStatus);
+    setStatus(initialStatus);
+  }, [initialStatus]); // This ensures any changes in initialStatus prop are caught
+
+  useEffect(() => {
+    console.log("Status set to:", status);
+  }, [status]); // This logs whenever status changes
+
   const handleOnClick = () => {
     onClick();
     setCurrentPiece(lastClicked);
+    setStatus(null); // Update status via setState
   };
 
   const handleDrop = (e) => {

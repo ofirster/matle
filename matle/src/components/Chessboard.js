@@ -30,11 +30,13 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
   const onHiddenSquareSelected = (squareName) => {
     setSelectedSquare(squareName !== selectedSquare ? squareName : null);
   };
-  const onHiddenSquareClick = (squareName) => {
+  const onHiddenSquareClicked = (squareName) => {
     if (selectedPiece !== null) {
       return onPieceAssign(squareName, selectedPiece);
     } else {
-      return onHiddenSquareSelected(squareName);
+      if (guesses[guesses.length - 1][squareName] !== null)
+        return onPieceAssign(squareName, null);
+      else return onHiddenSquareSelected(squareName);
     }
   };
   const getPieceBySquareName = (squareName) => {
@@ -103,7 +105,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
   const getGuessResult = (squareName) => {
     return guessesResults.length > 0
       ? guessesResults[guessesResults.length - 1][squareName]
-      : undefined;
+      : null;
   };
 
   return (
@@ -125,9 +127,9 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                     correctPiece={piece}
                     isWhite={isWhite}
                     onPieceDrop={onPieceAssign}
-                    status={status}
+                    initialStatus={status}
                     onClick={() => {
-                      return onHiddenSquareClick(squareName);
+                      return onHiddenSquareClicked(squareName);
                     }}
                     lastClicked={selectedPiece}
                     selectedPiece={
