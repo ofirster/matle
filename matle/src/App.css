@@ -192,14 +192,12 @@ body, .app-container {
     background-color: #787c7f;
     border-color: #787c7f;
     transition: background-color 0.3s ease; /* Smooth transition for background color */
-
   }
   
   /* For an empty square or default state */
   .default {
-    background-color: #fff;
-    color: #444;
-    border-color: #d3d6da;
+    border-color: #787c7f;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
   }
   
 

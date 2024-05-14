@@ -29,8 +29,7 @@ const HiddenSquare = ({
   );
 
   const [currentPiece, setCurrentPiece] = useState(selectedPiece);
-  const [status, setStatus] = useState(initialStatus); // Manage status as state
-
+  const [status, setStatus] = useState(initialStatus);
   // Update the currentPiece whenever selectedPiece changes
   useEffect(() => {
     setCurrentPiece(selectedPiece);
@@ -41,33 +40,25 @@ const HiddenSquare = ({
     console.log("initialStatus received:", initialStatus);
     setStatus(initialStatus);
   }, [initialStatus]); // This ensures any changes in initialStatus prop are caught
+  // Update the status whenever initialStatus changes
+  useEffect(() => {
+    console.log("initialStatus received:", initialStatus);
+    setStatus(initialStatus);
+  }, [initialStatus]);
 
   useEffect(() => {
-    console.log("Status set to:", status);
-  }, [status]); // This logs whenever status changes
+    console.log(squareName + " Status set to:", status);
+  }, [status]);
 
   const handleOnClick = () => {
     onClick();
     setCurrentPiece(lastClicked);
-    setStatus(null); // Update status via setState
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const guessedPiece = e.dataTransfer.getData("piece");
-    setCurrentPiece(guessedPiece);
-    if (onPieceDrop) onPieceDrop(squareName, guessedPiece);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
+    setStatus("default"); // Set status to "default" when clicked
   };
 
   return (
     <div
       onClick={handleOnClick}
-      onDrop={handleDrop}
-      onDragOver={handleDragOver}
       className={`box hidden ${isWhite ? "white" : "black"} ${status} ${lastClicked || isSelected ? "last-clicked" : ""}`}
     >
       {currentPiece && getPiece(currentPiece)}
