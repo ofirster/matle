@@ -34,26 +34,29 @@ const HiddenSquare = ({
   useEffect(() => {
     setCurrentPiece(selectedPiece);
   }, [selectedPiece]);
-
-  // At the top of HiddenSquare component
+  // This effect runs whenever initialStatus changes
   useEffect(() => {
-    console.log("initialStatus received:", initialStatus);
-    setStatus(initialStatus);
-  }, [initialStatus]); // This ensures any changes in initialStatus prop are caught
-  // Update the status whenever initialStatus changes
-  useEffect(() => {
-    console.log("initialStatus received:", initialStatus);
     setStatus(initialStatus);
   }, [initialStatus]);
 
   useEffect(() => {
-    console.log(squareName + " Status set to:", status);
-  }, [status]);
+    return () => {
+      console.log("destructor SquareName " + squareName + " Status " + status);
+    };
+  }, []);
+  // This effect runs on every render, mimicking an 'onLoad' behavior
+  useEffect(() => {
+    console.log(squareName + " rendered with status: " + status);
+    // Any logic here will run on every update/render
+  });
 
   const handleOnClick = () => {
     onClick();
     setCurrentPiece(lastClicked);
+    console.log(status);
     setStatus("default"); // Set status to "default" when clicked
+    initialStatus = "default";
+    console.log(status);
   };
 
   return (

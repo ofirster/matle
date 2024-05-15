@@ -5,7 +5,7 @@ import BoardSquare from "./BoardSquare";
 import GuessTable from "./GuessTable";
 
 const Chessboard = ({ chessBoard, hiddenSquares }) => {
-  const guessesAllowed = 50;
+  const guessesAllowed = 5;
 
   const [guesses, setGuesses] = useState([
     hiddenSquares.reduce((acc, cur) => ({ ...acc, [cur]: null }), {}),
@@ -14,6 +14,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
   const [guessesResults, setGuessesResults] = useState([]);
   const [selectedPiece, setSelectedPiece] = useState(null);
   const [selectedSquare, setSelectedSquare] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0); // State to trigger re-render of HiddenSquares
 
   const handlePieceSelect = (pieceCode) => {
     if (selectedSquare !== null) {
@@ -85,6 +86,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
 
       setGuessesResults([...guessesResults, newGuessResults]);
       setGuesses([...guesses, { ...lastGuess }]);
+      setRefreshKey((prevKey) => prevKey + 1); // Increment to trigger re-render
     }
   };
 
@@ -136,7 +138,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                       guesses[guesses.length - 1][squareName] ?? null
                     }
                     isSelected={selectedSquare === squareName}
-                    key={squareName}
+                    key={`${squareName}-${refreshKey}`} // Dynamic key for re-rendering
                   />
                 );
               } else {
@@ -145,7 +147,7 @@ const Chessboard = ({ chessBoard, hiddenSquares }) => {
                     squareName={squareName}
                     piece={piece}
                     isWhite={isWhite}
-                    key={squareName}
+                    key={`${squareName}`} // Dynamic key for re-rendering
                   />
                 );
               }
